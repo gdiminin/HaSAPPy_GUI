@@ -1,8 +1,8 @@
 # HaSAPPy_GUI
-Developing GUI to work with HaSAPPy
+Developing a GUI application for HaSAPPy
 
 To run HaSAPPy_GUI find in the terminal the HaSAPPy_GUI folder that contains the HaSAPPy_GUI.py file.
 In the terminal use the following command:
 python HaSAPPy_GUI.py
 
-At the moment the application can be used to fill the loadModule.txt file necessary to run an experiment in HaSAPPy. After compilation of the sections of interset a new loadModule can be created (Save function). HaSAPPy_GUI allows the user to load and modify a loadModule previously created (Load function).
+The GUI supports the user in compiling the loadModule.txt file (requested to run an experiment in HaSAPPy). When sections of interest have been filled up, a new loadModule can be saved (Save function). HaSAPPy_GUI allows the user to load and modify a loadModule previously generated (Load function).
