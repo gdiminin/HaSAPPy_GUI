@@ -348,9 +348,9 @@ class MainWindow(QtGui.QMainWindow):
         container,line_4 = self.addExperiment(container,line_4,'Read',self._2A.value(),self._2B.currentText(),
                                               self._2C,self._2D,self._2E)
         
-        self.connect(self._2A,QtCore.SIGNAL("valueChanged(int)"), lambda : self.addExperiment(container,line_4,'Read',self._2A.value(),self._2B.currentText(),
+        self._2A.valueChanged.connect(lambda : self.addExperiment(container,line_4,'Read',self._2A.value(),self._2B.currentText(),
                                             self._2C,self._2D,self._2E))
-        self.connect(self._2B,QtCore.SIGNAL("currentIndexChanged()"), lambda : self.addExperiment(container,line_4,'Read',self._2A.value(),self._2B.currentText(),
+        self._2B.currentIndexChanged.connect(lambda : self.addExperiment(container,line_4,'Read',self._2A.value(),self._2B.currentText(),
                                             self._2C,self._2D,self._2E))
         ###
         
@@ -366,8 +366,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_2H = QtGui.QSlider(QtCore.Qt.Horizontal,container)
         self.slider_2H.setRange(1,45)
         self.slider_2H.setValue(20)
-        QtCore.QObject.connect(self._2H,QtCore.SIGNAL("valueChanged(int)"),self.slider_2H.setValue)
-        QtCore.QObject.connect(self.slider_2H,QtCore.SIGNAL("valueChanged(int)"),self._2H.setValue)
+        self._2H.valueChanged.connect(self.slider_2H.setValue)
+        self.slider_2H.valueChanged.connect(self._2H.setValue)
         
         label_12 = QtGui.QLabel('    Quality average limit of 3 end sequence\t\t\n'
                                 '    after the call of a bad quality base:',container)
@@ -377,8 +377,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_2J = QtGui.QSlider(QtCore.Qt.Horizontal,container)
         self.slider_2J.setRange(1,45)
         self.slider_2J.setValue(30)
-        QtCore.QObject.connect(self._2J,QtCore.SIGNAL("valueChanged(int)"),self.slider_2J.setValue)
-        QtCore.QObject.connect(self.slider_2J,QtCore.SIGNAL("valueChanged(int)"),self._2J.setValue)
+        self._2J.valueChanged.connect(self.slider_2J.setValue)
+        self.slider_2J.valueChanged.connect(self._2J.setValue)
         
         
         
@@ -469,9 +469,9 @@ class MainWindow(QtGui.QMainWindow):
         self.pairEndWidgets['Phix'].append(line_7.count()-1)
         container,line_7 = self.addExperiment(container,line_7,'Phix',self._3C.value(),self._3D.currentText(),
                                               self._3E,self._3F,self._3G)
-        self.connect(self._3C,QtCore.SIGNAL("valueChanged(int)"), lambda : self.addExperiment(container,line_7,'Phix',self._3C.value(),self._3D.currentText(),
+        self._3C.valueChanged.connect(lambda : self.addExperiment(container,line_7,'Phix',self._3C.value(),self._3D.currentText(),
                                             self._3E,self._3F,self._3G))
-        self.connect(self._3D,QtCore.SIGNAL("currentIndexChanged()"), lambda : self.addExperiment(container,line_7,'Phix',self._3C.value(),self._3D.currentText(),
+        self._3D.currentIndexChanged.connect(lambda : self.addExperiment(container,line_7,'Phix',self._3C.value(),self._3D.currentText(),
                                             self._3E,self._3F,self._3G))
         ###### Place conatainer attribuates #######
         l_container = QtGui.QVBoxLayout()
@@ -552,10 +552,10 @@ class MainWindow(QtGui.QMainWindow):
         container,line_8 = self.addExperiment(
                 container,line_8,'Alignment',self._4D.value(),self._4E.currentText(),
                 self._4F,self._4G,self._4H)
-        self.connect(self._4D,QtCore.SIGNAL("valueChanged(int)"), lambda : self.addExperiment(
+        self._4D.valueChanged.connect(lambda : self.addExperiment(
                 container,line_8,'Alignment',self._4D.value(),self._4E.currentText(),
                 self._4F,self._4G,self._4H))
-        self.connect(self._4E,QtCore.SIGNAL("currentIndexChanged()"), lambda : self.addExperiment(
+        self._4E.currentIndexChanged.connect(lambda : self.addExperiment(
                 container,line_8,'Alignment',self._4D.value(),self._4E.currentText(),
                 self._4F,self._4G,self._4H))
         ###### Place conatainer attribuates #######
@@ -610,8 +610,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_5A = QtGui.QSlider(QtCore.Qt.Horizontal,container)
         self.slider_5A.setRange(1,100)
         self.slider_5A.setValue(1)
-        QtCore.QObject.connect(self._5A,QtCore.SIGNAL("valueChanged(int)"),self.slider_5A.setValue)
-        QtCore.QObject.connect(self.slider_5A,QtCore.SIGNAL("valueChanged(int)"),self._5A.setValue)
+        self._5A.valueChanged.connect(self.slider_5A.setValue)
+        self.slider_5A.valueChanged.connect(self._5A.setValue)
         label_3 = QtGui.QLabel('Window size to define I.I. :\t\t',container)
         self._5B = QtGui.QSpinBox(container)
         self._5B.setRange(1,100)
@@ -619,8 +619,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_5B = QtGui.QSlider(QtCore.Qt.Horizontal,container)
         self.slider_5B.setRange(1,100)
         self.slider_5B.setValue(1)
-        QtCore.QObject.connect(self._5B,QtCore.SIGNAL("valueChanged(int)"),self.slider_5B.setValue)
-        QtCore.QObject.connect(self.slider_5B,QtCore.SIGNAL("valueChanged(int)"),self._5B.setValue)
+        self._5B.valueChanged.connect(self.slider_5B.setValue)
+        self.slider_5B.valueChanged.connect(self._5B.setValue)
         label_4 = QtGui.QLabel('Alignment Q value :\t\t',container)
         self._5C = QtGui.QCheckBox(container)
         self._5C.setChecked(True)
@@ -632,8 +632,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_5D.setValue(0)
         
         self._5C.clicked.connect(lambda: self.deactivate([self._5D,self.slider_5D],self._5C))
-        QtCore.QObject.connect(self._5D,QtCore.SIGNAL("valueChanged(int)"),self.slider_5D.setValue)
-        QtCore.QObject.connect(self.slider_5D,QtCore.SIGNAL("valueChanged(int)"),self._5D.setValue)
+        self._5D.valueChanged.connect(self.slider_5D.setValue)
+        self.slider_5D.valueChanged.connect(self._5D.setValue)
         
         label_5 = QtGui.QLabel('Numbers of libraries to analyse:\t\t',container)
         label_6 = QtGui.QLabel('Are libreries sequenced pair-end?\t\t',container)
@@ -659,7 +659,7 @@ class MainWindow(QtGui.QMainWindow):
         self.pairEndWidgets['IIdefinition'].append(line_8.count()-1)
         container,line_8 = self.addExperiment(
                 container,line_8,'IIdefinition',self._5E.value(),'No',self._5G,self._5H,'No')
-        self.connect(self._5E,QtCore.SIGNAL("valueChanged(int)"), lambda : self.addExperiment(
+        self._5E.valueChanged.connect(lambda : self.addExperiment(
                 container,line_8,'IIdefinition',self._5E.value(),'No',self._5G,self._5H,'No'))
         
         ###### Place conatainer attribuates #######
@@ -746,7 +746,7 @@ class MainWindow(QtGui.QMainWindow):
         self.pairEndWidgets['IIingenes'].append(line_11.count()-1)
         container,line_11 = self.addExperiment(
                 container,line_11,'IIingenes',self._6F.value(),'No',self._6H,self._6I,'No')
-        self.connect(self._6F,QtCore.SIGNAL("valueChanged(int)"), lambda : self.addExperiment(
+        self._6F.valueChanged.connect(lambda : self.addExperiment(
                 container,line_11,'IIingenes',self._6F.value(),'No',self._6H,self._6I,'No'))
         
         ###### Place conatainer attribuates #######
@@ -862,7 +862,7 @@ class MainWindow(QtGui.QMainWindow):
         
         self._7D = []
         self._7E = []
-        self.connect(self._7A,QtCore.SIGNAL("valueChanged(int)"), lambda : addLibraries(self,
+        self._7A.valueChanged.connect(lambda : addLibraries(self,
                 container,line_3,'AnalysisGroup',self._7A.value(),self._7D,self._7E))
         
         ##
@@ -891,8 +891,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_7Q = QtGui.QSlider(QtCore.Qt.Horizontal,container)
         self.slider_7Q.setRange(1,100)
         self.slider_7Q.setValue(1)
-        QtCore.QObject.connect(self._7Q,QtCore.SIGNAL("valueChanged(int)"),self.slider_7Q.setValue)
-        QtCore.QObject.connect(self.slider_7Q,QtCore.SIGNAL("valueChanged(int)"),self._7Q.setValue)
+        self._7Q.valueChanged.connect(self.slider_7Q.setValue)
+        self.slider_7Q.valueChanged.connect(self._7Q.setValue)
         
         ###
         label_12 = QtGui.QLabel('Numbers of libraries to analyse:\t',container)
@@ -915,7 +915,7 @@ class MainWindow(QtGui.QMainWindow):
         self.pairEndWidgets['Analysis'].append(line_18.count()-1)
         container,line_11 = self.addExperiment(
                 container,line_18,'Analysis',self._7R.value(),'No',self._7S,self._7T,'No')
-        self.connect(self._7R,QtCore.SIGNAL("valueChanged(int)"), lambda : self.addExperiment(
+        self._7R.valueChanged.connect(lambda : self.addExperiment(
                 container,line_18,'IIingenes',self._7R.value(),'No',self._7S,self._7T,'No'))
         ######Deactivation commands ###############
         self._7J.currentIndexChanged.connect(lambda: self.deactivate([self._7K,self._7L,self._7M,
@@ -1055,7 +1055,7 @@ class MainWindow(QtGui.QMainWindow):
         self.add_widget_to_gridlayout([(label_3,0,2,1,2),(label_4,0,4,1,1),(label_5,0,6,1,1)],line_3)
         container,line_3 = addTables(self,container,line_3,'TablesGroup',self._8A.value(),
                                      self._8B,self._8C,self._8D)
-        self.connect(self._8A,QtCore.SIGNAL("valueChanged(int)"), lambda : addTables(self,
+        self._8A.valueChanged.connect(lambda : addTables(self,
                 container,line_3,'TablesGroup',self._8A.value(),self._8B,self._8C,self._8D))
         
         label_6 = QtGui.QLabel('Location of GroupAnalysis file :\t',container)
@@ -1133,8 +1133,8 @@ class MainWindow(QtGui.QMainWindow):
         self.slider_9F = QtGui.QSlider(QtCore.Qt.Horizontal,container)
         self.slider_9F.setRange(1,100)
         self.slider_9F.setValue(1)
-        QtCore.QObject.connect(self._9F,QtCore.SIGNAL("valueChanged(int)"),self.slider_9F.setValue)
-        QtCore.QObject.connect(self.slider_9F,QtCore.SIGNAL("valueChanged(int)"),self._9F.setValue)
+        self._9F.valueChanged.connect(self.slider_9F.setValue)
+        self.slider_9F.valueChanged.connect(self._9F.setValue)
         label_9 = QtGui.QLabel('Annotate gene names :\t\t',container)
         self._9G = QtGui.QComboBox(container)
         self._9G.addItems(['Yes','No'])
