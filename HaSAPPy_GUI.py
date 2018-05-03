@@ -327,7 +327,7 @@ class MainWindow(QtGui.QMainWindow):
         self._2A.setRange(0,100)
         self._2A.setValue(1)
         self._2B = QtGui.QComboBox(container)
-        self._2B.addItems(['Yes','No'])
+        self._2B.addItems(['No','Yes'])
         
         #Creates a QGridLayout where to store position of libraries location created in addExperiment function
         line_4 = QtGui.QGridLayout()
@@ -450,7 +450,7 @@ class MainWindow(QtGui.QMainWindow):
         self._3C.setRange(1,100)
         self._3C.setValue(1)
         self._3D = QtGui.QComboBox(container)
-        self._3D.addItems(['Yes','No'])
+        self._3D.addItems(['No','Yes'])
         
         #Creates a QGridLayout where to store position of libraries location created in addExperiment function
         line_7 = QtGui.QGridLayout()
@@ -532,7 +532,7 @@ class MainWindow(QtGui.QMainWindow):
         self._4D.setRange(1,100)
         self._4D.setValue(1)
         self._4E = QtGui.QComboBox(container)
-        self._4E.addItems(['Yes','No'])
+        self._4E.addItems(['No','Yes'])
         
         #Creates a QGridLayout where to store position of libraries location created in addExperiment function
         line_8 = QtGui.QGridLayout()
@@ -641,7 +641,7 @@ class MainWindow(QtGui.QMainWindow):
         self._5E.setRange(1,100)
         self._5E.setValue(1)
         self._5F = QtGui.QComboBox(container)
-        self._5F.addItems(['Yes','No'])
+        self._5F.addItems(['No','Yes'])
         
         #Creates a QGridLayout where to store position of libraries location created in addExperiment function
         line_8 = QtGui.QGridLayout()
@@ -728,7 +728,7 @@ class MainWindow(QtGui.QMainWindow):
         self._6F.setRange(0,100)
         self._6F.setValue(1)
         self._6G = QtGui.QComboBox(container)
-        self._6G.addItems(['Yes','No'])
+        self._6G.addItems(['No','Yes'])
         
         #Creates a QGridLayout where to store position of libraries location created in addExperiment function
         line_11 = QtGui.QGridLayout()
@@ -875,7 +875,7 @@ class MainWindow(QtGui.QMainWindow):
         
         label_8 =  QtGui.QLabel('Perform Outlier analysis :\t\t',container)
         self._7J = QtGui.QComboBox(container)
-        self._7J.addItems(['Yes','No'])
+        self._7J.addItems(['No','Yes'])
         label_9 = QtGui.QLabel('- Approach for analysis :\t',container)
         self._7K = QtGui.QCheckBox('Fold',container)
         self._7L = QtGui.QCheckBox('Rank',container)
