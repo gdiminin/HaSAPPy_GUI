@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'filterSelection.ui'
+# Form implementation generated from reading ui file '/Users/gdiminin/Documents/ZURIGO/Python/HaSAPPy_GUI/filterSelection.ui'
 #
 # Created by: PyQt4 UI code generator 4.12.1
 #
@@ -148,12 +148,22 @@ class Ui_Filter(object):
         self.down.setText(_translate("Filter", "Down", None))
         self.remove.setText(_translate("Filter", "Remove", None))
         self.label_5.setText(_translate("Filter", "Operation", None))
-        self.operation.setItemText(0, _translate("Filter", "None", None))
-        self.operation.setItemText(1, _translate("Filter", "Ascending", None))
-        self.operation.setItemText(2, _translate("Filter", "Descending", None))
+        self.operation.setItemText(0, _translate("Filter", "-None-", None))
+        self.operation.setItemText(1, _translate("Filter", "ascending", None))
+        self.operation.setItemText(2, _translate("Filter", "descending", None))
         self.operation.setItemText(3, _translate("Filter", ">", None))
         self.operation.setItemText(4, _translate("Filter", ">=", None))
         self.operation.setItemText(5, _translate("Filter", "<", None))
         self.operation.setItemText(6, _translate("Filter", "<=", None))
         self.label_6.setText(_translate("Filter", "Value", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    Filter = QtGui.QDialog()
+    ui = Ui_Filter()
+    ui.setupUi(Filter)
+    Filter.show()
+    sys.exit(app.exec_())
 

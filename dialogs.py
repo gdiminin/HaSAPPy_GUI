@@ -85,9 +85,8 @@ def headerSelection(main,output_):
     def fillComboBox(main,dialog):
         def changeFunction(main,dialog,rawExperiments):
             dialog.function.clear()
-            to_exclude = list(rawExperiments.union(str(main._7B.text())))
             if dialog.parameter.currentText()=='Score':
-                if dialog.sample.currentText()not in to_exclude:
+                if dialog.sample.currentText()!= str(main._7B.text()):
                     dialog.function.addItem('all')
                     dialog.function.addItem('fisher')
                     if main._7K.isChecked():
@@ -95,25 +94,28 @@ def headerSelection(main,output_):
                     if main._7L.isChecked():
                         dialog.function.addItem('rank')
             else:
-                for function in ['all','raw','rank']:
-                    dialog.function.addItem(function)
-                if dialog.sample.currentText()not in to_exclude:
+		dialog.function.addItem('all')
+		dialog.function.addItem('raw')
+		for exp in rawExperiments:
+		    if exp != '':
+		    	dialog.function.addItem(exp)
+		dialog.function.addItem('rank')
+                if dialog.sample.currentText() != str(main._7B.text()):
                     dialog.function.addItem('fold')    
                 multipleExperiments = False
                 for group in main._7E:
-                    if len(','.join(group)) > 1:
+                    if len(group.split(',')) > 1:
                         multipleExperiments = True
-                if len(','.join(str(main._7C.text()))) > 1:
+                if len(str(main._7C.text()).split(',')) > 1:
                     multipleExperiments = True
                 if multipleExperiments:
-                    if dialog.sample.currentText()not in to_exclude[:-1]:
-                        for function in ['mean', 'stdev']:
-                            dialog.function.addItem(function) 
-                        if dialog.sample.currentText() != to_exclude[-1]:
-                            dialog.function.addItem('ttest')
+                    for function in ['sum','mean', 'stdev']:
+                        dialog.function.addItem(function)
+                    if dialog.sample.currentText()!= str(main._7B.text()):
+                        dialog.function.addItem('ttest')
+
         #Sample
         dialog.sample.addItem('All')
-        dialog.sample.addItem('Raw')
         dialog.sample.addItem(str(main._7B.text()))
         for group in main._7D:
             if group != '':
@@ -123,10 +125,6 @@ def headerSelection(main,output_):
         rawExperiments = rawExperiments.union(str(main._7C.text()).split(','))
         for group in main._7E:
             rawExperiments = rawExperiments.union(group.split(','))
-        
-        for library in rawExperiments:
-            if library != '':
-                dialog.sample.addItem(library)
                 
         #Parameter
         dialog.parameter.addItem('All')
@@ -136,10 +134,12 @@ def headerSelection(main,output_):
             dialog.parameter.addItem('KI')
         if main._7H.isChecked():
             dialog.parameter.addItem('Bias')
+            dialog.parameter.addItem('biasFW')
+            dialog.parameter.addItem('biasRV')
         if main._7I.isChecked():
             dialog.parameter.addItem('Reads')
-        if main._7J.currentText()=='Yes':
-            dialog.parameter.addItem('Score')
+        dialog.parameter.addItem('Score')
+
         #Function
         changeFunction(main,dialog,rawExperiments)
         dialog.parameter.currentIndexChanged.connect(lambda: changeFunction(main,dialog,rawExperiments))
@@ -174,7 +174,7 @@ def filterSelection(main,output_):
         header = '(%s,%s,%s)' %(sample,parameter,function)
         
         operation = str(dialog.operation.currentText())
-        if operation not in ['Ascending','Descending']:
+        if operation not in ['ascending','descending']:
             value = str(dialog.value.value())
             filter_ = '[%s,%s,%s]' %(header,operation,value)
         else:
@@ -201,31 +201,32 @@ def filterSelection(main,output_):
     def fillComboBox(main,dialog):
         def changeFunction(main,dialog,rawExperiments):
             dialog.function.clear()
-            to_exclude = list(rawExperiments.union(str(main._7B.text())))
             if dialog.parameter.currentText()=='Score':
-                if dialog.sample.currentText()not in to_exclude:
+                if dialog.sample.currentText()!= str(main._7B.text()):
                     dialog.function.addItem('fisher')
                     if main._7K.isChecked():
                         dialog.function.addItem('fold')
                     if main._7L.isChecked():
                         dialog.function.addItem('rank')
             else:
-                for function in ['raw','rank']:
-                    dialog.function.addItem(function)
-                if dialog.sample.currentText()not in to_exclude:
+                for exp in rawExperiments:
+		    if exp != '':
+		    	dialog.function.addItem(exp)
+		dialog.function.addItem('rank')
+
+                if dialog.sample.currentText()!= str(main._7B.text()):
                     dialog.function.addItem('fold')    
                 multipleExperiments = False
                 for group in main._7E:
-                    if len(','.join(group)) > 1:
+                    if len(group.split(',')) > 1:
                         multipleExperiments = True
-                if len(','.join(str(main._7C.text()))) > 1:
+                if len(str(main._7C.text()).split(',')) > 1:
                     multipleExperiments = True
                 if multipleExperiments:
-                    if dialog.sample.currentText()not in to_exclude[:-1]:
-                        for function in ['mean', 'stdev']:
-                            dialog.function.addItem(function) 
-                        if dialog.sample.currentText() != to_exclude[-1]:
-                            dialog.function.addItem('ttest')
+                    for function in ['sum','mean','stdev']:
+                        dialog.function.addItem(function) 
+                    if dialog.sample.currentText() != str(main._7B.text()):
+                        dialog.function.addItem('ttest')
         #Sample
         dialog.sample.addItem(str(main._7B.text()))
         for group in main._7D:
@@ -235,9 +236,6 @@ def filterSelection(main,output_):
         rawExperiments = rawExperiments.union(str(main._7C.text()).split(','))
         for group in main._7E:
             rawExperiments = rawExperiments.union(group.split(','))
-        for library in rawExperiments:
-            if library != '':
-                dialog.sample.addItem(library)
                 
         #Parameter
         if main._7F.isChecked():
@@ -246,10 +244,12 @@ def filterSelection(main,output_):
             dialog.parameter.addItem('KI')
         if main._7H.isChecked():
             dialog.parameter.addItem('Bias')
+            dialog.parameter.addItem('biasFW')
+            dialog.parameter.addItem('biasRV')
         if main._7I.isChecked():
             dialog.parameter.addItem('Reads')
-        if main._7J.currentText()=='Yes':
-            dialog.parameter.addItem('Score')
+        dialog.parameter.addItem('Score')
+
         #Function
         changeFunction(main,dialog,rawExperiments)
         dialog.parameter.currentIndexChanged.connect(lambda: changeFunction(main,dialog,rawExperiments))

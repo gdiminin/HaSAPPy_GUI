@@ -224,17 +224,17 @@
      <widget class="QComboBox" name="operation">
       <item>
        <property name="text">
-        <string>None</string>
+        <string>-None-</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Ascending</string>
+        <string>ascending</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Descending</string>
+        <string>descending</string>
        </property>
       </item>
       <item>
